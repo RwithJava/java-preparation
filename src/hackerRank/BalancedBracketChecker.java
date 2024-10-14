@@ -1,6 +1,7 @@
 package hackerRank;
 
-import java.util.Stack;
+import java.util.*;
+import java.util.Deque;
 
 public class BalancedBracketChecker {
 
@@ -40,11 +41,23 @@ public class BalancedBracketChecker {
         String test4 = "{()()}";  // Balanced
         String test5 = "({}";     // Not balanced
 
-        System.out.println(isBalanced(test1)); // Output: true
-        System.out.println(isBalanced(test2)); // Output: true
-        System.out.println(isBalanced(test3)); // Output: false
-        System.out.println(isBalanced(test4)); // Output: true
-        System.out.println(isBalanced(test5)); // Output: false
+//        System.out.println(isBalanced(test1)); // Output: true
+//        System.out.println(isBalanced(test2)); // Output: true
+//        System.out.println(isBalanced(test3)); // Output: false
+//        System.out.println(isBalanced(test4)); // Output: true
+//        System.out.println(isBalanced(test5)); // Output: false
+
+//        System.out.println(isBalancedList(test1)); // Output: true
+//        System.out.println(isBalancedList(test2)); // Output: true
+//        System.out.println(isBalancedList(test3)); // Output: false
+//        System.out.println(isBalancedList(test4)); // Output: true
+//        System.out.println(isBalancedList(test5)); // Output: false
+
+        System.out.println(isBalancedDeque(test1)); // Output: true
+        System.out.println(isBalancedDeque(test2)); // Output: true
+        System.out.println(isBalancedDeque(test3)); // Output: false
+        System.out.println(isBalancedDeque(test4)); // Output: true
+        System.out.println(isBalancedDeque(test5)); // Output: false
 
     }
 
@@ -74,6 +87,52 @@ public class BalancedBracketChecker {
         }
 
         return stack.isEmpty();
+    }
+
+    private static String isBalancedList(String brackets) {
+        List<Character> list = new LinkedList<>();  // Use List as a stack
+
+        for (char c : brackets.toCharArray()) {
+            // If it's an opening bracket, add it to the list (stack)
+            if (c == '(' || c == '{') {
+                list.add(c);
+            }
+            // If it's a closing bracket, check if it matches the top of the list
+            else if (c == ')' || c == '}') {
+                if (list.isEmpty()) return "Not Balanced"; // No opening bracket to match
+
+                char openBracket = list.removeLast(); // Simulate stack pop
+                if ((c == ')' && openBracket != '(') || (c == '}' && openBracket != '{')) {
+                    return "Not Balanced";
+                }
+            }
+        }
+
+        // If list is empty, return "Balanced", else "Not Balanced"
+        return list.isEmpty() ? "Balanced" : "Not Balanced";
+    }
+
+    public static String isBalancedDeque(String brackets) {
+        Deque<Character> deque = new ArrayDeque<>();  // Use Deque as a stack
+
+        for (char c : brackets.toCharArray()) {
+            // If it's an opening bracket, push it to the deque (stack)
+            if (c == '(' || c == '{') {
+                deque.push(c);
+            }
+            // If it's a closing bracket, check if it matches the top of the stack
+            else if (c == ')' || c == '}') {
+                if (deque.isEmpty()) return "Not Balanced"; // No opening bracket to match
+
+                char openBracket = deque.pop();
+                if ((c == ')' && openBracket != '(') || (c == '}' && openBracket != '{')) {
+                    return "Not Balanced";
+                }
+            }
+        }
+
+        // If deque is empty, return "Balanced", else "Not Balanced"
+        return deque.isEmpty() ? "Balanced" : "Not Balanced";
     }
 
 }
