@@ -93,36 +93,36 @@ public class BalancedBracketChecker {
         List<Character> list = new LinkedList<>();  // Use List as a stack
 
         for (char c : brackets.toCharArray()) {
-            // If it's an opening bracket, add it to the list (stack)
+
             if (c == '(' || c == '{') {
                 list.add(c);
             }
-            // If it's a closing bracket, check if it matches the top of the list
-            else if (c == ')' || c == '}') {
-                if (list.isEmpty()) return "Not Balanced"; // No opening bracket to match
 
-                char openBracket = list.removeLast(); // Simulate stack pop
+            else if (c == ')' || c == '}') {
+                if (list.isEmpty()) return "Not Balanced";
+
+                char openBracket = list.removeLast();
                 if ((c == ')' && openBracket != '(') || (c == '}' && openBracket != '{')) {
                     return "Not Balanced";
                 }
             }
         }
 
-        // If list is empty, return "Balanced", else "Not Balanced"
+
         return list.isEmpty() ? "Balanced" : "Not Balanced";
     }
 
     public static String isBalancedDeque(String brackets) {
-        Deque<Character> deque = new ArrayDeque<>();  // Use Deque as a stack
+        Deque<Character> deque = new ArrayDeque<>();
 
         for (char c : brackets.toCharArray()) {
-            // If it's an opening bracket, push it to the deque (stack)
+
             if (c == '(' || c == '{') {
                 deque.push(c);
             }
-            // If it's a closing bracket, check if it matches the top of the stack
+
             else if (c == ')' || c == '}') {
-                if (deque.isEmpty()) return "Not Balanced"; // No opening bracket to match
+                if (deque.isEmpty()) return "Not Balanced";
 
                 char openBracket = deque.pop();
                 if ((c == ')' && openBracket != '(') || (c == '}' && openBracket != '{')) {
@@ -131,7 +131,7 @@ public class BalancedBracketChecker {
             }
         }
 
-        // If deque is empty, return "Balanced", else "Not Balanced"
+
         return deque.isEmpty() ? "Balanced" : "Not Balanced";
     }
 
