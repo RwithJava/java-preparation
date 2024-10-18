@@ -30,11 +30,34 @@ public class BBC {
         String nonRepeatingWord = nonRepeatingString(se);
         System.out.println(nonRepeatingWord);
 
-        List<String> values = List.of("aa","bb","cc","aa","bb");
+        List<String> values = List.of("aa", "bb", "cc", "aa", "bb");
         duplicatesAndCount(values);
 
-        List<String> valuesTray = List.of("A","B","C","123","Eye","@#");
+        List<String> valuesTray = List.of("A", "B", "C", "123", "Eye", "@#");
         insertPipeSymbol(valuesTray);
+
+        String s1 = "listen";
+        String s2 = "silent";
+        boolean flag = anagaram(s1, s2);
+        System.out.println(flag);
+
+    }
+
+    private static boolean anagaram(String s1, String s2) {
+
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        char[] ss1 = s1.toCharArray();
+        char[] ss2 = s1.toCharArray();
+
+        Arrays.sort(ss1);
+        Arrays.sort(ss2);
+
+
+        return Arrays.equals(ss1, ss2);
+
 
     }
 
@@ -97,20 +120,20 @@ public class BBC {
                 .orElse("no element found");
     }
 
-    private static void duplicatesAndCount(List<String> s){
-        s.stream().collect(Collectors.groupingBy(i->i,Collectors.counting()))
+    private static void duplicatesAndCount(List<String> s) {
+        s.stream().collect(Collectors.groupingBy(i -> i, Collectors.counting()))
                 .entrySet().stream()
-                .filter(i->i.getValue() > 1)
+                .filter(i -> i.getValue() > 1)
                 .map(Map.Entry::getKey).forEach(System.out::println);
     }
 
-    private static void insertPipeSymbol(List<String> valuesTray){
+    private static void insertPipeSymbol(List<String> valuesTray) {
         valuesTray.stream()
-                .map(i -> i.length() > 1 ? addSymbol(i) : i )
+                .map(i -> i.length() > 1 ? addSymbol(i) : i)
                 .forEach(System.out::println);
     }
 
-    private static String addSymbol(String input){
-        return String.join("|",input.split(""));
+    private static String addSymbol(String input) {
+        return String.join("|", input.split(""));
     }
 }
