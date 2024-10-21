@@ -90,7 +90,7 @@ public class BBC {
 
 
         }
-        return stack.isEmpty() ? "balanced" : "unblanaced";
+        return stack.isEmpty() ? "balanced" : "unbalanced";
     }
 
     private static int[] reverseArray(int[] arr) {

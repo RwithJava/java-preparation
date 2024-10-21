@@ -45,7 +45,7 @@ public class DecryptMessage {
     }
 
     public static void main(String[] args) {
-        String encryptedMessage = "hacker2ank";
+        String encryptedMessage = "hacker2ank ab2";
         System.out.println(decrypt(encryptedMessage));  // Output: "hello world"
     }
 }
