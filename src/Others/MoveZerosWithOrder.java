@@ -129,3 +129,22 @@ The space complexity is 𝑂(1)
 O(1) since no additional array is used.
      */
 }
+
+class MyClass {
+    private final Object lock1 = new Object();
+    private final Object lock2 = new Object();
+
+    public void methodWithMultipleLocks() {
+        synchronized (lock1) {
+            // Code synchronized on lock1
+            System.out.println("Lock 1 acquired by " + Thread.currentThread().getName());
+        }
+
+        synchronized (lock2) {
+            // Code synchronized on lock2
+            System.out.println("Lock 2 acquired by " + Thread.currentThread().getName());
+        }
+    }
+}
+
+
