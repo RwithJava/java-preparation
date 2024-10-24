@@ -19,11 +19,14 @@ public class LengthWithOutSpaces {
         System.out.println(length1);
 
         //third way -- work on this
-//        String[] stringArray = sentence.split(" ");
-//        int length3 = 0;
-//        for(String word: stringArray){
-//            length3 = word.length();
-//        }
-//        System.out.println(length3);
+        String[] stringArray = sentence.split(" ");
+        int length3 = 0;
+        for(String word: stringArray){
+            length3 += word.length();
+        }
+        System.out.println(length3);
+
     }
 }
+
+
